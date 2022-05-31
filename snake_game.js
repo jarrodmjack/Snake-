@@ -80,9 +80,7 @@ const moveSnake = () => {
             if (isHeadAtRight){
                 currentHeadPosition = currentHeadPosition - LINE_PIXEL_COUNT
             }
-            if (isHeadAtRight) {
-                currentHeadPosition = currentHeadPosition + LINE_PIXEL_COUNT
-            }
+            
         break;
         case UP_DIR:
             currentHeadPosition = currentHeadPosition - LINE_PIXEL_COUNT
@@ -115,10 +113,44 @@ const moveSnake = () => {
     // Assuming an empty pixel, add snake body styling
     nextSnakeHeadPixel.classList.add('snakeBodyPixel')
 
+
+    // Remove snake styling to keep snake appropriate length
+    setTimeout(() => {
+        nextSnakeHeadPixel.classList.remove('snakeBodyPixel')
+    }, snakeLength)
+
+    // Describe what to do if the snake encounters a food pixel
+    if(currentHeadPosition == currentFoodPosition){
+        totalFoodEaten++
+        document.getElementById('pointsEarned').innerText = totalFoodEaten
+        snakeLength += 100
+        createFood()
+    }
+
+    totalDistanceTraveled++
+    document.getElementById('blocksTraveled').innerText = totalDistanceTraveled
+
 }
 
+// Call initial functions to create board and start game
 createGameBoardPixels();
 
 createFood();
 
+// Set animation speed to 1/10 of a second
 let moveSnakeInterval = setInterval(moveSnake, 100)
+
+addEventListener('keydown', e => changeDirection(e.keyCode))
+
+
+// Variables for on-screen buttons
+const leftButton = document.getElementById('leftButton')
+const rightButton = document.getElementById('rightButton')
+const upButton = document.getElementById('upButton')
+const downButton = document.getElementById('downButton')
+
+// Add listeners for on screen buttons
+leftButton.onclick = () => changeDirection(LEFT_DIR)
+rightButton.onclick = () => changeDirection(RIGHT_DIR)
+upButton.onclick = () => changeDirection(UP_DIR)
+downButton.onclick = () => changeDirection(DOWN_DIR)
