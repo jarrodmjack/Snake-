@@ -5,24 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="snake_game.css">
     <title>Document</title>
 </head>
 
 <body>
     <section id="gameContainer"></section>
-    <section id="scoreContainer"></section>
-    <section class="scoreBoard">Food: <span id="pointsEarned">0</span></section>
-    <section class="scoreBoard">Blocks: <span id="pointsTravelled">0</span></section>
+    <section id="scoreContainer">
+        <section class="scoreBoard">Food: <span id="pointsEarned">0</span></section>
+        <section class="scoreBoard">Blocks: <span id="pointsTravelled">0</span></section>
+    </section>
+    <section id="onScreenControllers">
+        <button id="leftButton">&leftarrow;</button>
+        <div>
+            <button id="upButton">&uparrow;</button>
+            <button id="downButton">&downarrow;</button>
+        </div>
+        <button id="rightButton">&rightarrow;</button>
 
-<section id="onScreenControllers">
-    <button id="leftButton">&leftarrow;</button>
-    <div>
-        <button id="upButton">&uparrow;</button>
-        <button id="downButton">&downarrow;</button>
-    </div>
-    <button id="rightButton">&rightarrow;</button>
-
-</section>
+    </section>
 </body>
 <script src="snake_game.js"></script>
 
