@@ -15,7 +15,7 @@ const gameContainer = document.querySelector('#gameContainer')
 
 // Creating the game board pixels
 const createGameBoardPixels = () => {
-    for(let i = 1; i <= TOTAL_PIXEL_COUNT; i++){
+    for (let i = 1; i <= TOTAL_PIXEL_COUNT; i++) {
         gameContainer.innerHTML = `${gameContainer.innerHTML} <div class="gameBoardPixel" id="pixel${i}"></div>`
     }
 }
@@ -42,5 +42,29 @@ const DOWN_DIR = 40
 
 let snakeCurrentDirection = RIGHT_DIR
 
+// Make sure user input is valid and change snake direction variable
+const changeDirection = newDirectionCode => {
+    if (newDirectionCode == snakeCurrentDirection) return;
+
+    if (newDirectionCode == LEFT_DIR && snakeCurrentDirection !== RIGHT_DIR) {
+        snakeCurrentDirection = newDirectionCode
+    } else if (newDirectionCode == UP_DIR && snakeCurrentDirection !== DOWN_DIR) {
+        snakeCurrentDirection = newDirectionCode
+    } else if (newDirectionCode == RIGHT_DIR && snakeCurrentDirection !== LEFT_DIR) {
+        snakeCurrentDirection = newDirectionCode
+    } else if (newDirectionCode == DOWN_DIR && snakeCurrentDirection !== UP_DIR) {
+        snakeCurrentDirection = newDirectionCode
+    }
+}
 
 
+// Set starting point for snake on load
+let currentHeadPosition = TOTAL_PIXEL_COUNT / 2
+
+// Set initial length
+let snakeLength = 200
+
+// Start moving snake
+const moveSnake = () => {
+    
+}
